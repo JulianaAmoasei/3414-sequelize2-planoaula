@@ -6,7 +6,7 @@ class PessoaServices extends Services {
   }
 
   async pegaMatriculasPorEstudante(id) {
-    const estudante = await super.pegaUmRegistroPorId(id);
+    const estudante = await super.pegaUmRegistro({ id: id });
     const listaMatriculas = await estudante.getAulasMatriculadas();
     return listaMatriculas;
   }
