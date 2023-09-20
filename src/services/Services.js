@@ -18,7 +18,7 @@ class Services {
   }
 
   async atualizaRegistro(dadosAtualizados, id) {
-    const listadeRegistrosAtualizados = dataSource[this.model].update(dadosAtualizados, {
+    const listadeRegistrosAtualizados = await dataSource[this.model].update(dadosAtualizados, {
       where: { id: id }
     });
     if (listadeRegistrosAtualizados[0] === 0) {
