@@ -5,8 +5,8 @@ class Services {
     this.model = nomeDoModel;
   }
 
-  async pegaTodosOsRegistros () {
-    return dataSource[this.model].findAll();
+  async pegaTodosOsRegistros (where = {}) {
+    return dataSource[this.model].findAll({ where: { ...where }});
   }
 
   async pegaRegistrosPorEscopo (escopo) {
@@ -19,6 +19,14 @@ class Services {
 
   async pegaUmRegistroPorId(id) {
     return dataSource[this.model].findByPk(id);
+  }
+
+  async pegaEContaRegistros(where) {
+    return dataSource[this.model].findAndCountAll({ 
+      where: { ...where }, 
+      limit: 20,
+      order: [['id', 'DESC']]
+    });
   }
 
   async criaRegistro(dadosDoRegistro) {
