@@ -13,6 +13,10 @@ class Services {
     return dataSource[this.model].scope(escopo).findAll();
   }
 
+  async pegaUmRegistro(where) {
+    return dataSource[this.model].findOne({ where: { ...where }});
+  }
+
   async pegaUmRegistroPorId(id) {
     return dataSource[this.model].findByPk(id);
   }
