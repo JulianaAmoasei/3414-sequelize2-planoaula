@@ -22,11 +22,7 @@ class Services {
   }
 
   async pegaEContaRegistros(where) {
-    return dataSource[this.model].findAndCountAll({ 
-      where: { ...where }, 
-      limit: 20,
-      order: [['id', 'DESC']]
-    });
+    return dataSource[this.model].findAndCountAll({ ...where });
   }
 
   async criaRegistro(dadosDoRegistro) {
